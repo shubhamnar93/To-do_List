@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="styles/authen.css">
+</head>
+<body>
+  <div class="container">
+    <h2>login</h2>
+    <form id="registerForm" acgtion="/login" method="post">
+      <input type="email" id="email" placeholder="Email" name="username" required>
+      <input type="password" id="password" placeholder="Password" name="password" required>
+      <button type="submit">login</button>
+    </form>
+    <hr>
+    <button id="googleSignIn" onclick="window.location.href='/auth/google'">Sign in with Google</button>
+    <button id="login" onclick="window.location.href='/register'">Register</button>
+
+  </div>
+
+</body>
+</html>

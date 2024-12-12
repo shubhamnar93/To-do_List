@@ -1,0 +1,22 @@
+# Node.js dependencies
+node_modules/
+
+# dotenv environment variable file
+.env
+
+# Logs
+*.log
+
+# Build output directories
+/dist
+/build
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Test coverage output
+coverage/
+
+# VSCode configuration
+.vscode/

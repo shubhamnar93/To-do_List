@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myto-do</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <h1>My To-Do List</h1>
+        <form action="/logout" method="get" class="logout-form">
+            <button class="logout-btn" type="submit">Logout</button>
+        </form>
+        <hr>
+        <form action="/" method="get">
+            <div class="date-picker">
+                <input type="date" id="date-input" name="date" value="<%= date %>" onchange="this.form.submit()">
+            </div>
+        </form>
+        
+        <form action="/add" method="post" class="task-form">
+            <input type="text" id="task-input" name="task" placeholder="Enter task">
+            <input type="hidden" name="date" value="<%= date %>">
+            <button id="add-task" type="submit">Add Task</button>
+        </form>
+        <div class="task-list">
+            <ul id="tasks">
+                <h2>Task</h2>
+                <% tasks.forEach(task => { %>
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" onchange="this.parentElement.querySelector('span').style.textDecoration = this.checked ? 'line-through' : ''">
+                    <span class="task"><%= task.tdo  %></span>
+                    <form action="/delete" method="post" class="delete-form">
+                        <button class="delete-btn" type="submit" onclick="event.preventDefault(); this.closest('form').submit();">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                            </svg>
+                        </button>
+                        <input type="hidden" name="task" value="<%= task.tdo %>">
+                        <input type="hidden" name="date" value="<%= date %>">
+                    </form>
+                </li>
+                <% }); %>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
